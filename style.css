@@ -1,25 +1,41 @@
+/* Basic layout for the body */
 body {
   display: flex;
-  justify-content: center; 
-  align-items: center; 
-  height: 100vh; 
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   margin: 0;
-  background-color: #f0f0f0; 
+  background-color: #f0f0f0;
   background-image: url('https://wallpaperaccess.com/full/1490042.jpg'); /* Backgroundimg for the full body */
-  background-size: cover; 
+  background-size: cover;
   background-position: center;
+  overflow: hidden; /* Prevents content from overflowing the screen */
 }
 
 /* Styles for the clock */
 .clock {
-  width: 500px;
-  height: 500px;
+  width: 40vmin; 
+  height: 40vmin; 
   border: 10px solid black;
   border-radius: 50%;
   position: relative;
   background: white;
   box-shadow: 12px 12px 30px 6px rgba(0, 0, 0, 0.3);
-  
+  transform: rotate(270deg);
+}
+
+/* Rolex logo*/
+.clock::before {
+  content: "";
+  position: absolute;
+  top: -700px;  /* Adjust this value to move the logo higher or lower */
+  left: 700px;   
+  transform: translateX(-50%) rotate(90deg); /* Centers and rotates the logo, since original layout wasn't correct */
+  width: 20vmin;  /* Responsive size for the logo */
+  height: 20vmin;
+  background: url('http://logos-download.com/wp-content/uploads/2016/03/Rolex_logo.png') no-repeat center center;
+  background-size: contain;
+  z-index: 10; /* Z-Index to overlay the Rolex Logo infront of the bg image */
 }
 
 .outer-clock-face {
@@ -30,7 +46,8 @@ body {
   justify-content: center;
   align-items: center;
 }
-/*Sets the new clock face (ClocRoc) and adjusts it to its optimal display settings */
+
+/* Sets the new clock face (ClocRoc) and adjusts it to its optimal display settings */
 .inner-clock-face {
   position: relative;
   width: 100%;
@@ -40,39 +57,62 @@ body {
   align-items: center;
   border-radius: 50%;
   background-image: url('https://vorlagen.melitia-roth.de/data/uhr-ziffernblatt-vorlage-8.png');
-  background-size: 140%; 
-  background-position: center; 
+  background-size: 140%;
+  background-position: center;
+  transform: rotate(90deg);
 }
 
-/*Standard for every hand linked to the clock */
+/* Standard for every hand linked to the clock */
 .hand {
   position: absolute;
   width: 50%;
   height: 6px;
   top: 50%;
   left: 50%;
-  transform-origin: 0% 50%; /* Startpunkt an der Mitte des Kreises */
-  transform: rotate(90deg); /*  */
+  transform-origin: 0% 50%; /* Starting point of the hand */
+  transform: rotate(90deg);
   border-radius: 3px;
-}
-
-/* Hour Hand */
+};s
+/* Hour hand */
 .hour-hand {
   width: 35%;
   height: 10px;
   background: black;
 }
 
-/* Minutes Hand */
+/* Minute hand */
 .min-hand {
   width: 45%;
   height: 7px;
   background: gray;
 }
 
-/* Second Hand */
+/* Second hand */
 .second-hand {
   width: 50%;
   height: 3px;
   background: red;
+}
+
+/* Adjustments for a responsive design for every screen */
+@media (max-width: 768px) {
+  .clock {
+    width: 50vmin; /* Smaller clock for e.g tablets or other  */
+    height: 50vmin;
+  }
+  .clock::before {
+    width: 15vmin;
+    height: 15vmin;
+  }
+}
+
+@media (max-width: 480px) {
+  .clock {
+    width: 60vmin; /* Smaller clock for e.g phones */
+    height: 60vmin;
+  }
+  .clock::before {
+    width: 12vmin;
+    height: 12vmin;
+  }
 }

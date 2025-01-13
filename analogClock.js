@@ -1,32 +1,31 @@
-// Function, to set the trivial hands onto the clock
+// Function to set the clock hands
 function setClock() {
   const now = new Date();
 
-  // Calculates the Seconds
+  // Calculate the Seconds
   const seconds = now.getSeconds();
-  const secondsDegrees = (seconds / 60) * 360;
+  const secondsDegrees = (seconds / 60) * 360 + 270; // Sets the initial rotation to 270°, since the layout wasn't correct before
 
-  // Calculates the minutes
+  // Calculate the Minutes
   const minutes = now.getMinutes();
-  const minutesDegrees = (minutes / 60) * 360 + (seconds / 60) * 6;
+  const minutesDegrees = (minutes / 60) * 360 + (seconds / 60) * 6 + 270; // Sets the initial rotation to 270°, since the layout wasn't correct before
 
-  // Calculates the hours
+  // Calculate the Hours
   const hours = now.getHours();
-  const hoursDegrees = (hours % 12 / 12) * 360 + (minutes / 60) * 30;
+  const hoursDegrees = (hours % 12 / 12) * 360 + (minutes / 60) * 30 + 270; // Sets the initial rotation to 270°, since the layout wasn't correct before
 
-  // Get the Hand out of the DOM
+  // Get the Hands from the DOM
   const secondHand = document.querySelector(".second-hand");
   const minuteHand = document.querySelector(".min-hand");
   const hourHand = document.querySelector(".hour-hand");
 
-  // This rotates the Hand with the reference of the time
+  // Rotate the Hands based on the time
   secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
   minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
   hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
 }
 
-// Upate the clock every second
+// Update the clock every second
 setInterval(setClock, 1000);
-
 
 setClock();
