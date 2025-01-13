@@ -14,24 +14,22 @@ body {
 
 /* Styles for the clock */
 .clock {
-  width: 50vmin; 
-  height: 50vmin; 
-  border: 13px solid rgb(0, 0, 0);
+  width: 53vmin; 
+  height: 53vmin; 
+  border: 10px solid black;
   border-radius: 50%;
   position: relative;
   background: white;
   box-shadow: 12px 12px 30px 6px rgba(0, 0, 0, 0.3);
   transform: rotate(270deg);
-
 }
-
 
 /* Rolex logo*/
 .clock::before {
   content: "";
   position: absolute;
-  top: -700px;  /* Adjust this value to move the logo higher or lower */
-  left: 800px;   
+  top: -660px;  
+  left: 780px;   
   transform: translateX(-50%) rotate(90deg); /* Centers and rotates the logo, since original layout wasn't correct */
   width: 25vmin;  /* Responsive size for the logo */
   height: 25vmin;
@@ -74,7 +72,8 @@ body {
   transform-origin: 0% 50%; /* Starting point of the hand */
   transform: rotate(90deg);
   border-radius: 3px;
-};s
+}
+
 /* Hour hand */
 .hour-hand {
   width: 35%;
